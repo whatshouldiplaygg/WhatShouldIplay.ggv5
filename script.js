@@ -259,35 +259,116 @@ imagem:"https://cdn.cloudflare.steamstatic.com/steam/apps/356190/header.jpg"
 
 function sortear(){
 
-const perfil=document.getElementById("perfil").value;
+    const perfil = document.getElementById("perfil").value;
 
-if(perfil==""){
-alert("Informe seu perfil Steam!");
-return;
+    if(perfil==""){
+
+        alert("Informe seu perfil Steam!");
+
+        return;
+
+    }
+
+    const numero = Math.floor(Math.random()*jogos.length);
+
+    const jogo = jogos[numero];
+
+    document.getElementById("resultado").innerHTML = `
+
+    <div class="game-card">
+
+        <img src="${jogo.imagem}" alt="${jogo.nome}">
+
+        <h2>🎲 Seu próximo jogo é:</h2>
+
+        <h1>${jogo.nome}</h1>
+
+        <p><strong>🎮 Gênero:</strong> ${jogo.genero}</p>
+
+        <p><strong>📅 Ano:</strong> ${jogo.ano}</p>
+
+        <p><strong>🏢 Desenvolvedora:</strong> ${jogo.desenvolvedora}</p>
+
+        <p><strong>⭐ Nota:</strong> ${jogo.nota}</p>
+
+        <p><strong>⏱️ Tempo médio:</strong> ${jogo.tempo}</p>
+
+        <p>${jogo.descricao}</p>
+
+    </div>
+
+    `;
+
+    soltarConfetes();
+
 }
 
-const numero=Math.floor(Math.random()*jogos.length);
-const jogo=jogos[numero];
+/* ==========================================
+            CONFETES
+========================================== */
 
-document.getElementById("resultado").innerHTML=`
+function soltarConfetes(){
 
-<div class="game-card">
+    const duracao = 1800;
 
-<img src="${jogo.imagem}" alt="${jogo.nome}">
+    const fim = Date.now() + duracao;
 
-<h2>🎲 Seu próximo jogo é:</h2>
+    const intervalo = setInterval(() => {
 
-<h1>${jogo.nome}</h1>
+        if(Date.now() > fim){
 
-<p><strong>🎮 Gênero:</strong> ${jogo.genero}</p>
-<p><strong>📅 Ano:</strong> ${jogo.ano}</p>
-<p><strong>🏢 Desenvolvedora:</strong> ${jogo.desenvolvedora}</p>
-<p><strong>⭐ Nota:</strong> ${jogo.nota}</p>
-<p><strong>⏱️ Tempo médio:</strong> ${jogo.tempo}</p>
-<p>${jogo.descricao}</p>
+            clearInterval(intervalo);
 
-</div>
+            return;
 
-`;
+        }
+
+        confetti({
+
+            particleCount:5,
+
+            angle:60,
+
+            spread:70,
+
+            startVelocity:45,
+
+            origin:{
+                x:0,
+                y:0.65
+            },
+
+            colors:[
+                "#ffffff",
+                "#8b5cf6",
+                "#7c3aed"
+            ]
+
+        });
+
+        confetti({
+
+            particleCount:5,
+
+            angle:120,
+
+            spread:70,
+
+            startVelocity:45,
+
+            origin:{
+                x:1,
+                y:0.65
+            },
+
+            colors:[
+                "#ffffff",
+                "#8b5cf6",
+                "#7c3aed"
+            ]
+
+        });
+
+    },100);
 
 }
