@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What Should I Play?</title>
+
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <div class="developer">
+
+        <span class="titulo">DEVELOPED BY</span>
+
+        <span>Cosmic</span>
+
+        <span>Pigorcx</span>
+
+    </div>
+
+    <div class="container">
+
+        <h1>🎲 What Should I Play?</h1>
+
+        <p>
+            Cole seu perfil Steam e deixe a sorte decidir seu próximo jogo.
+        </p>
+
+        <input
+            id="perfil"
+            type="text"
+            placeholder="https://steamcommunity.com/id/seuperfil">
+
+        <button onclick="sortear()">
+
+            🎲 Surpreenda-me
+
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="matrix.js"></script>
+
+</body>
+
+</html>
